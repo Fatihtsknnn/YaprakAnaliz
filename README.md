@@ -5,6 +5,8 @@ Bandırma Onyedi Eylül Üniversitesi
 
 **Hazırlayanlar:** Hazan Ezgi Erçin (2311504299) & Fatih Taşkın (2111504031)
 
+![Demo](assets/yaprak_analiz.gif)
+
 ## English Summary
 
 An Android application for real-time plant leaf disease detection and
