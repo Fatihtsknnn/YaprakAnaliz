@@ -11,7 +11,7 @@ model = tf.keras.models.load_model('yaprak_analiz_modeli.h5')
 print("Model basariyla yuklendi.")
 
 # 2. Rastgele bir test resmi sec
-base_path = "dataset_balanced/apple/diseased" # Elma klasorunden ornek aliyoruz
+base_path = os.path.join("dataset_clean", "diseased", "apple_Disased_images") # Elma klasorunden ornek aliyoruz
 if not os.path.exists(base_path):
     print("Hata: Klasor yolu bulunamadi! Klasor adini kontrol et.")
 else:

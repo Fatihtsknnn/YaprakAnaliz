@@ -33,10 +33,15 @@ def load_nir_data():
     images_nir = []
     # Tum kategorilerden veri toplayalim
     categories = ["apple", "corn", "grape"]
-    
+    diseased_klasorler = {
+        "apple": "apple_Disased_images",
+        "corn": "corn_Diseased_images",
+        "grape": "Grape_diseased_images",
+    }
+
     print("NIR egitimi icin veriler hazirlaniyor...")
     for cat in categories:
-        path = os.path.join("dataset_balanced", cat, "diseased")
+        path = os.path.join("dataset_clean", "diseased", diseased_klasorler[cat])
         if not os.path.exists(path): continue
         
         files = [f for f in os.listdir(path) if f.lower().endswith(('.jpg', '.png'))][:200]

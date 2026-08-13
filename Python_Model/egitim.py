@@ -11,10 +11,21 @@ import matplotlib.pyplot as plt
 from model_unet import lightweight_unet
 
 BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
-BASE_PATH  = os.path.join(BASE_DIR, "dataset_balanced")
+BASE_PATH  = os.path.join(BASE_DIR, "dataset_clean")
 IMG_SIZE   = 256
 BATCH_SIZE = 8
 EPOCHS     = 15
+
+DISEASED_KLASOR = {
+    "apple": "apple_Disased_images",
+    "corn": "corn_Diseased_images",
+    "grape": "Grape_diseased_images",
+}
+HEALTHY_KLASOR = {
+    "apple": "Apple___healthy",
+    "corn": "Corn_(maize)___healthy",
+    "grape": "Grape___healthy",
+}
 
 
 def kayit_listesi():
@@ -26,7 +37,7 @@ def kayit_listesi():
     categories = ["apple", "corn", "grape"]
 
     for cat in categories:
-        img_dir  = os.path.join(BASE_PATH, cat, "diseased")
+        img_dir  = os.path.join(BASE_PATH, "diseased", DISEASED_KLASOR[cat])
         mask_dir = os.path.join(BASE_PATH, "masks", cat)
 
         if os.path.exists(mask_dir):
@@ -36,19 +47,22 @@ def kayit_listesi():
                 mask_path = os.path.join(mask_dir, file)
                 if os.path.exists(img_path):
                     kayitlar.append((img_path, mask_path))
+        else:
+            print(f"  [UYARI] {cat}: maske klasoru bulunamadi ({mask_dir}) — bu kategorinin "
+                  f"hastalikli goruntuleri egitime DAHIL EDILMEYECEK. Once maske_olustur.py calistirin.")
 
         # Sagikli yapraklari da bos (tamamen siyah) maskeyle egitime kat —
         # aksi halde model "hastaliksiz" gorunumu hic gormez ve saglikli
         # yapraklarda da hastalik isaretler (her seyi hastalik sanir).
-        healthy_dir = os.path.join(BASE_PATH, cat, "healthy")
+        healthy_dir = os.path.join(BASE_PATH, "healthy", HEALTHY_KLASOR[cat])
         if os.path.exists(healthy_dir):
             healthy_files = [f for f in os.listdir(healthy_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
             for file in healthy_files:
                 kayitlar.append((os.path.join(healthy_dir, file), ""))
 
     for cat in categories:
-        diseased_dir = os.path.join(BASE_PATH, cat, "diseased")
-        healthy_dir  = os.path.join(BASE_PATH, cat, "healthy")
+        diseased_dir = os.path.join(BASE_PATH, "diseased", DISEASED_KLASOR[cat])
+        healthy_dir  = os.path.join(BASE_PATH, "healthy", HEALTHY_KLASOR[cat])
         n_diseased = sum(1 for _ in os.listdir(diseased_dir) if _.lower().endswith(('.jpg', '.jpeg', '.png'))) if os.path.exists(diseased_dir) else 0
         n_healthy  = sum(1 for _ in os.listdir(healthy_dir)  if _.lower().endswith(('.jpg', '.jpeg', '.png'))) if os.path.exists(healthy_dir)  else 0
         print(f"  {cat:<6}: hastalikli={n_diseased}, saglikli={n_healthy}")

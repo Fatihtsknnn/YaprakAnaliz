@@ -17,9 +17,13 @@ except Exception as e:
     print("Hata: " + str(e))
 
 # 2. Rastgele Resim Sec
-categories = ["apple", "corn", "grape"]
-cat = random.choice(categories)
-base_path = os.path.join(BASE_DIR, "dataset_balanced", cat, "diseased")
+categories = {
+    "apple": "apple_Disased_images",
+    "corn": "corn_Diseased_images",
+    "grape": "Grape_diseased_images",
+}
+cat = random.choice(list(categories.keys()))
+base_path = os.path.join(BASE_DIR, "dataset_clean", "diseased", categories[cat])
 files = [f for f in os.listdir(base_path) if f.lower().endswith(('.jpg', '.png'))]
 test_img_yolu = os.path.join(base_path, random.choice(files))
 

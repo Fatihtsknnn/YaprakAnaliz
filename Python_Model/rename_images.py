@@ -3,7 +3,8 @@ import cv2
 import random
 
 
-KLASOR_YOLU = r"C:\Users\Ander\OneDrive\Masaüstü\leaf_project\dataset_balanced\grape\healthy"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KLASOR_YOLU = os.path.join(BASE_DIR, "dataset_clean", "healthy", "Grape___healthy")
 
 def veri_artir(hedef_sayi=1000):
 

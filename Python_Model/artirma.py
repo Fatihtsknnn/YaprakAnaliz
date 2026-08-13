@@ -133,6 +133,6 @@ def veri_artir_paired(img_klasor, mask_klasor, hedef_sayi=1000):
 
 if __name__ == "__main__":
     # Corn diseased dengesizligini duzelt
-    corn_img  = os.path.join(BASE_DIR, "dataset_balanced", "corn", "diseased")
-    corn_mask = os.path.join(BASE_DIR, "dataset_balanced", "masks", "corn")
+    corn_img  = os.path.join(BASE_DIR, "dataset_clean", "diseased", "corn_Diseased_images")
+    corn_mask = os.path.join(BASE_DIR, "dataset_clean", "masks", "corn")
     veri_artir_paired(corn_img, corn_mask, hedef_sayi=1000)

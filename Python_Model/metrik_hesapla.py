@@ -35,15 +35,20 @@ def degerlendir(model_yolu, max_goruntu=None):
     print(f"\nModel yukleniyor: {model_yolu}")
     model = tf.keras.models.load_model(model_yolu, compile=False)
 
-    dataset_path = os.path.join(BASE_DIR, "dataset_balanced")
+    dataset_path = os.path.join(BASE_DIR, "dataset_clean")
     categories   = ["apple", "corn", "grape"]
+    diseased_klasorler = {
+        "apple": "apple_Disased_images",
+        "corn": "corn_Diseased_images",
+        "grape": "Grape_diseased_images",
+    }
 
     tum_iou   = []
     tum_dice  = []
     kategori_sonuclar = {}
 
     for cat in categories:
-        img_dir  = os.path.join(dataset_path, cat, "diseased")
+        img_dir  = os.path.join(dataset_path, "diseased", diseased_klasorler[cat])
         mask_dir = os.path.join(dataset_path, "masks", cat)
 
         if not os.path.exists(img_dir) or not os.path.exists(mask_dir):

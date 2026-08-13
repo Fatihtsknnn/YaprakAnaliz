@@ -53,11 +53,16 @@ def create_masks(sadece_eksik=True):
     sadece_eksik=True: zaten maskesi olan goruntuleri atlar (mevcut maskeleri bozmaz)
     sadece_eksik=False: tum maskeleri yeniden olusturur
     """
-    dataset_path = os.path.join(BASE_DIR, "dataset_balanced")
+    dataset_path = os.path.join(BASE_DIR, "dataset_clean")
     categories = ["apple", "corn", "grape"]
+    diseased_klasorler = {
+        "apple": "apple_Disased_images",
+        "corn": "corn_Diseased_images",
+        "grape": "Grape_diseased_images",
+    }
 
     for cat in categories:
-        img_dir  = os.path.join(dataset_path, cat, "diseased")
+        img_dir  = os.path.join(dataset_path, "diseased", diseased_klasorler[cat])
         mask_dir = os.path.join(dataset_path, "masks", cat)
 
         if not os.path.exists(img_dir):

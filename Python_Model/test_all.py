@@ -11,12 +11,17 @@ model = tf.keras.models.load_model('yaprak_analiz_modeli.h5')
 
 # 2. Kategoriler ve Yollar
 categories = ["apple", "corn", "grape"]
-base_path = "dataset_balanced"
+diseased_klasorler = {
+    "apple": "apple_Disased_images",
+    "corn": "corn_Diseased_images",
+    "grape": "Grape_diseased_images",
+}
+base_path = os.path.join("dataset_clean", "diseased")
 
 plt.figure(figsize=(15, 10))
 
 for i, cat in enumerate(categories):
-    img_dir = os.path.join(base_path, cat, "diseased")
+    img_dir = os.path.join(base_path, diseased_klasorler[cat])
     
     if os.path.exists(img_dir):
         # Rastgele resim sec
