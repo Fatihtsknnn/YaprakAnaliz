@@ -1,0 +1,10 @@
+.git
+Android_Uygulama
+Raporlar
+assets
+*.pptx
+**/__pycache__
+**/*.pyc
+**/*.log
+Python_Model/dataset_clean
+Python_Model/sonuclar

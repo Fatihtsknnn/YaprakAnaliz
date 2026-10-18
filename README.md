@@ -75,6 +75,27 @@ pip install tensorflow numpy opencv-python matplotlib
 Veri setine buradan ulaşabilirsiniz:
 https://www.kaggle.com/datasets/arjuntejaswi/plant-village
 
+## Docker ile Çalıştırmak İçin
+
+Python kurulumu gerektirmeden modeli çalıştırmak için (Docker Desktop yeterli):
+
+```
+git clone https://github.com/fatihtaskinnn35/YaprakAnaliz.git
+cd YaprakAnaliz
+docker build -t yaprak-analiz .
+docker run --rm -v "%cd%/sonuclar:/app/sonuclar" yaprak-analiz
+```
+
+Bu komut `test_verileri/hastalikli_ornekler` içindeki görüntüleri analiz eder; her görüntü için
+RGB / segmentasyon / pseudo-NIR panelini ve `sonuclar.csv` (hastalık yüzdeleri) dosyasını
+`sonuclar/` klasörüne yazar. Kendi görüntülerinizi analiz etmek için:
+
+```
+docker run --rm -v "%cd%/benim_yapraklarim:/girdi" -v "%cd%/sonuclar:/app/sonuclar" yaprak-analiz --girdi /girdi --cikti /app/sonuclar
+```
+
+(Linux/macOS'ta `%cd%` yerine `$(pwd)` kullanın.)
+
 ## Android Kaynak Kodunu Açmak İçin
 
 1. Android Studio'yu aç
