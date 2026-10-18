@@ -85,7 +85,7 @@ https://www.kaggle.com/datasets/arjuntejaswi/plant-village
 Python kurulumu gerektirmeden modeli çalıştırmak için (Docker Desktop yeterli):
 
 ```
-git clone https://github.com/fatihtaskinnn35/YaprakAnaliz.git
+git clone https://github.com/Fatihtsknnn/YaprakAnaliz.git
 cd YaprakAnaliz
 docker build -t yaprak-analiz .
 docker run --rm -v "%cd%/sonuclar:/app/sonuclar" yaprak-analiz
