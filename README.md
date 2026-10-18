@@ -5,6 +5,11 @@ Bandırma Onyedi Eylül Üniversitesi
 
 **Hazırlayanlar:** Hazan Ezgi Erçin (2311504299) & Fatih Taşkın (2111504031)
 
+Bu proje **Hazan Ezgi Erçin** ve **Fatih Taşkın** tarafından ortak bir ekip çalışması olarak
+geliştirilmiştir; model eğitimi, Android uygulaması ve raporlama süreçleri birlikte yürütülmüştür.
+
+*This project was developed jointly by Hazan Ezgi Erçin and Fatih Taşkın as a team effort.*
+
 ![Demo](assets/yaprak_analiz.gif)
 
 ## English Summary
